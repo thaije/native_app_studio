@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">"Real Cows Have Curves "</string>
+
+    <string name="intro_text">Choose your favourite cow and we will find your soulmate!</string>
+    <string name="find_type">Find my type!</string>
+    <string name="button_left">I like the left one</string>
+    <string name="button_right">I like the right one</string>
+    <string name="action_settings">Settings</string>
+</resources>
