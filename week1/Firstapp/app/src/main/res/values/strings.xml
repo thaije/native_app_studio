@@ -6,4 +6,7 @@
     <string name="button_left">I like the left one</string>
     <string name="button_right">I like the right one</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_result">Wat is jouw type?</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

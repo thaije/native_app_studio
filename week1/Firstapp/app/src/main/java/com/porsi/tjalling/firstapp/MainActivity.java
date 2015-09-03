@@ -1,6 +1,7 @@
 package com.porsi.tjalling.firstapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,8 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends Activity {
-    private int spotted;
-    private int other;
+    public int spotted;
+    public int other;
     private int round;
 
     @Override
@@ -19,13 +20,13 @@ public class MainActivity extends Activity {
         resetScore();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public int getSpottedScore() {
+        return spotted;
     }
 
+    public int getOtherScore() {
+        return other;
+    }
 
     // increment the spotted score if the left button is pushed and go to the next round
     public void clickButtonLeft(View view) {
@@ -44,6 +45,14 @@ public class MainActivity extends Activity {
         // check if this was the last round
         if(round == 5) {
             System.out.println("Done");
+
+            //Start the new activity and send the scores
+            Intent i = new Intent(this, ResultActivity.class);
+            i.putExtra("spottedScore",spotted);
+            i.putExtra("otherScore",other);
+            startActivity(i);
+            finish();
+
         }
 
         // go to next round and render new images

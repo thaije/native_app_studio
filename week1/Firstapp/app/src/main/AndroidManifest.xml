@@ -16,6 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.porsi.tjalling.firstapp.ResultActivity"
+            android:label="@string/title_activity_result"
+            android:parentActivityName="com.porsi.tjalling.firstapp.MainActivity" >
+            <meta-data
+                android:name="android.support.MainActivity"
+                android:value="com.porsi.tjalling.firstapp.ResultActivity" />
+        </activity>
+
     </application>
 
 </manifest>
