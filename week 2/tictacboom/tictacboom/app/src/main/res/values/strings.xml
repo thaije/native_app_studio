@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tic Tac Boom</string>
+
+    <string name="hello_world">Are you smarter than a computer?\n Find out!</string>
+
+    <string name="new_game">New Game</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
