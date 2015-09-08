@@ -38,7 +38,16 @@ public class TicTactActivity extends AppCompatActivity {
         map.put(R.id.centerRight,"12");
         map.put(R.id.bottomLeft,"20");
         map.put(R.id.bottomCenter,"21");
-        map.put(R.id.bottomRight,"22");
+        map.put(R.id.bottomRight, "22");
+        ((ImageButton) findViewById(R.id.topLeft)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.topCenter)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.topRight)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.centerLeft)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.centerCenter)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.centerRight)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.bottomLeft)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.bottomCenter)).setImageResource(R.mipmap.transparent);
+        ((ImageButton) findViewById(R.id.bottomRight)).setImageResource(R.mipmap.transparent);
     }
 
     // reset the board when pushed on New Game button
@@ -59,11 +68,15 @@ public class TicTactActivity extends AppCompatActivity {
         System.out.println(horizontal);
         System.out.println(vertical);
 
-        if(board[horizontal][vertical] == -1) {
+        if(board[horizontal][vertical] == 0) {
+
+            System.out.println("box was empty, now filling..");
             // Do the human turn and check for a winner
             board[horizontal][vertical] = 1;
             pushedButton.setImageResource(R.mipmap.circle);
             checkWinner(1);
+
+            System.out.println("image resource changed");
 
             // do the computer move and check for a winner
             computerTurn();
@@ -83,7 +96,7 @@ public class TicTactActivity extends AppCompatActivity {
             h = rand.nextInt(3);
             v = rand.nextInt(3);
 
-        } while(board[h][v] != -1);
+        } while(board[h][v] != 0);
 
         // if we found a legal move update the board and add a cross
         board[h][v] = 2;
@@ -101,7 +114,7 @@ public class TicTactActivity extends AppCompatActivity {
 
     // checks if there is a winner in the current board state
     private void checkWinner(int whoToCheck) {
-        String winner = whoToCheck == 1 ? "You Win!" : "Computer Won!";
+        String winner = whoToCheck == 1 ? "You Win!" : "Boom!";
 
         // check for winning states and print the winner of one is found
         if ((board[0][0] == whoToCheck && board[0][1] == whoToCheck && board[0][2] == whoToCheck) ||
@@ -113,6 +126,7 @@ public class TicTactActivity extends AppCompatActivity {
             (board[0][0] == whoToCheck && board[1][1] == whoToCheck && board[2][2] == whoToCheck) ||
             (board[2][0] == whoToCheck && board[1][1] == whoToCheck && board[0][2] == whoToCheck)) {
             Toast.makeText(this, winner, Toast.LENGTH_SHORT).show();
+            resetBoard();
         }
 
     }
