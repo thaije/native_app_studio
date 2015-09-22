@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Number Guessing</string>
+
+    <string name="hello">Guess the number in 5 steps! Hint: The number is between 0 and 25</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_check">CheckActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_highscore_acitivty">HighscoreAcitivty</string>
+    <string name="highscores">See the highscores below</string>
+    <string-array name="list">
+        <item>Player 1</item>
+        <item>Player 4</item>
+        <item>Player 5</item>
+        <item>Player 2</item>
+        <item>Player 3</item>
+    </string-array>
+
+
+</resources>
