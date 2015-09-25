@@ -19,7 +19,7 @@ The Ghost word guessing game now available for all Android devices. Play with yo
 ![Highscores Activity](6.png)
 
 # Classes with data and public functions
-![Highscores Activity](sketch.jpg)
+![Highscores Activity](classes.jpg)
 
 ## Libraries
 None
