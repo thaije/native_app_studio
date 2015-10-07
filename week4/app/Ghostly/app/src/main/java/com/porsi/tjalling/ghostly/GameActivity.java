@@ -8,7 +8,9 @@ package com.porsi.tjalling.ghostly;
  * File description:
  */
 
-import android.content.res.AssetManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,36 +20,33 @@ public class GameActivity extends AppCompatActivity {
 
     Game game;
     Lexicon lexicon;
+//    SharedPreferences preferences = getSharedPreferences("pref", 0);
+//    SharedPreferences.Editor editor = preferences.edit();
+
+//    SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+//    String strUserName = SP.getString("username", "NA");
+//    boolean bAppUpdates = SP.getBoolean("applicationUpdates", false);
+//    String downloadType = SP.getString("downloadType", "1");
+//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+
+        launchStartscreen();
+
         // Create the lexicon and Game objects
-        this.lexicon = new Lexicon(this,"dutch.txt");
+        this.lexicon = new Lexicon(this, "dutch.txt");
         this.game = new Game(lexicon);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_game, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    // Launch the startscreen to get the intial settings
+    private void launchStartscreen() {
+        //Start the new activity and send the scores
+        Intent i = new Intent(this, StartActivity.class);
+        startActivity(i);
     }
 }

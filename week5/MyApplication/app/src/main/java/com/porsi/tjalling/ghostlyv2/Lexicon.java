@@ -1,4 +1,4 @@
-package com.porsi.tjalling.ghostly;
+package com.porsi.tjalling.ghostlyv2;
 
 import android.content.Context;
 import android.content.res.AssetManager;

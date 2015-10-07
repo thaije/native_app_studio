@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.0"
 
     defaultConfig {
-        applicationId "com.porsi.tjalling.ghostly"
+        applicationId "com.porsi.tjalling.ghostlyv2"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
