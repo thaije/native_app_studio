@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Author: Tjalling Haije
@@ -20,7 +21,10 @@ class Lexicon {
     private HashSet<String> filter = new HashSet<String>();
     private HashSet<String> lexicon = new HashSet<String>();
 
-    // open file and read into local data structure
+    /*
+     * Lexicon constructor.
+     * open file and read into local data structure
+     */
     Lexicon(Context context,String sourcePath) {
 
         // Get all assets
@@ -38,33 +42,53 @@ class Lexicon {
             e.printStackTrace();
         }
 
-        System.out.println("Done");
+        System.out.print("Done with lexicon:");
+        System.out.println(sourcePath);
 
     }
 
 
-    // Filter word list based on word
+    /*
+     * Filter word list based on if the word starts with the given input
+     */
     public void filter(String word) {
+        reset();
 
+        Iterator<String> it = lexicon.iterator();
+        while( it.hasNext() ) {
+            String item = it.next();
+
+            // add the word to the filter if it starts with the given input
+            if( item.startsWith(word.toLowerCase()) )
+                filter.add(item);
+        }
     }
 
 
-    // Return number of possible words remaining in filtered list
+    /*
+     * Return number of possible words remaining in filtered list
+     */
     public int count(String word) {
+        if(word == "")
+            return lexicon.size();
 
-        return 1;
+        return filter.size();
     }
 
 
-    // Returns last remaining word in filtered list
+    /*
+     * Returns last remaining word in filtered list
+     */
     public String result() {
         return "Last word";
     }
 
 
-    // Remove filter and reset to original lexicon
+    /*
+     * Remove filter and reset to original lexicon
+     */
     public void reset() {
-
+        filter.clear();
     }
 
 }

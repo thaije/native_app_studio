@@ -44,19 +44,21 @@
                 android:text="Start Game"
                 android:id="@+id/startButton"
                 android:allowUndo="true"
-                android:onClick="mDelayHideTouchListener" />
+                android:onClick="startGame" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Settings"
-                android:id="@+id/settingsButton" />
+                android:id="@+id/settingsButton"
+                android:onClick="startSettings" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Help"
-                android:id="@+id/helpButton" />
+                android:id="@+id/helpButton"
+                android:onClick="startAbout" />
         </LinearLayout>
 
     </FrameLayout>

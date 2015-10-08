@@ -2,12 +2,10 @@ package com.porsi.tjalling.ghostlyv2;
 
 import com.porsi.tjalling.ghostlyv2.util.SystemUiHider;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 /**
@@ -16,7 +14,7 @@ import android.view.View;
  *
  * @see SystemUiHider
  */
-public class Startscreen extends Activity {
+public class StartActivity extends Activity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -49,9 +47,28 @@ public class Startscreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
-
         setContentView(R.layout.activity_startscreen);
 
+        // set standard prefrences
+        PreferenceManager.setDefaultValues(this, R.xml.start_prefrences, false);
     }
+
+    public void startGame(View view) {
+        Intent i = new Intent(this, GameActivity.class);
+        startActivity(i);
+    }
+
+    public void startSettings(View view) {
+        Intent i = new Intent(this, StartSettingsActivity.class);
+        startActivity(i);
+    }
+
+    public void startAbout(View view) {
+        Intent i = new Intent(this, AboutActivity.class);
+        startActivity(i);
+    }
+
+
+
 
 }

@@ -8,4 +8,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_start_settings">StartSettingsActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_winning_screen">WinningScreen</string>
 </resources>

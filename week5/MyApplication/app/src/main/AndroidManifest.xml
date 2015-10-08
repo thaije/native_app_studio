@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Startscreen"
+            android:name=".StartActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,24 +19,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartSettings"
+            android:name=".StartSettingsActivity"
             android:label="@string/title_activity_start_settings"
-            android:parentActivityName=".Startscreen" >
+            android:parentActivityName=".StartActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.porsi.tjalling.ghostlyv2.Startscreen" />
+                android:value=".StartActivity" />
         </activity>
         <activity
-            android:name=".About"
+            android:name=".AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName=".Startscreen" >
+            android:parentActivityName=".StartActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.porsi.tjalling.ghostlyv2.Startscreen" />
+                android:value=".StartActivity" />
         </activity>
         <activity
             android:name=".GameActivity"
+            android:windowSoftInputMode="adjustResize"
             android:label="@string/title_activity_game" >
+        </activity>
+        <activity
+            android:name=".WinningActivity"
+            android:label="@string/title_activity_winning_screen"
+            android:parentActivityName=".StartActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StartActivity" />
         </activity>
     </application>
 
