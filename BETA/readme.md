@@ -3,5 +3,5 @@
 ### Beta release - Native app studio
 ### Author: Tjalling Haije, 10346236
 
-### Installtion: 
+### Installation: 
 Open the program in Android Studio and run.
