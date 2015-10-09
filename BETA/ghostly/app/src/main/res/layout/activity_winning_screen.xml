@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.porsi.tjalling.ghostlyv2.WinningActivity"
+    android:weightSum="100"
+    android:touchscreenBlocksFocus="false">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="dummy text winner"
+        android:id="@+id/winnerText"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="12"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="dummy text cause"
+        android:id="@+id/winnerCause"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="6" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/highscores"
+        android:id="@+id/highscoresTextView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="10"
+        android:textSize="20sp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/highscoreList"
+        android:layout_weight="55" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/restartButton"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:enabled="true"
+        android:layout_weight="15"
+        android:singleLine="false"
+        android:onClick="newGame" />
+</LinearLayout>

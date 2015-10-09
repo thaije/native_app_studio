@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Ghostly</string>
+
+    <string name="lexicon_path">dutch.txt</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_about">Help</string>
+
+    <string name="startbutton">Start Spel</string>
+    <string name="settingsbutton">Instellingen</string>
+    <string name="helpbutton">Help</string>
+
+    <string name="hello_world">Hallo Wereld!</string>
+    <string name="action_settings">Instellingen</string>
+    <string name="title_activity_game">Game Activiteit</string>
+    <string name="newgame_settings">Nieuw spel</string>
+    <string name="title_activity_start_settings">Start instellingen activiteit</string>
+
+    <string name="highscores">Topscores</string>
+    <string name="restartButton">Opnieuw</string>
+    <string name="winnaar">heeft gewonnen!</string>
+    <string name="winMethod1">Geen woorden meer mogelijk</string>
+    <string name="winMethod2">Een bestaand woord gevormd door de tegenstander</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_winning_screen">WinningScreen</string>
+</resources>

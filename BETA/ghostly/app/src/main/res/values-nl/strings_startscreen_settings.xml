@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language">Taal</string>
+    <string name="language_title">Selecteer Taal</string>
+    <string name="language_summary">Taal van o.a. woordenboek gebruikt om woorden op te zoeken</string>
+    <string name="language_dialog">Kies een taal:</string>
+    <string-array name="language_entries">
+        <item>Nederlands</item>
+        <item>Engels</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>nl</item>
+        <item>en</item>
+    </string-array>
+
+    <string name="nickname1_title">Nickname speler 1</string>
+    <string name="nickname1_dialog">Nickname speler 1:</string>
+    <string name="nickname2_title">Nickname speler 2</string>
+    <string name="nickname2_dialog">Nickname speler 2:</string>
+</resources>
