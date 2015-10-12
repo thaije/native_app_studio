@@ -12,12 +12,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Set;
+import java.util.TreeMap;
+
 /**
  * Author: Tjalling Haije
  * Student number: 10346236
@@ -66,23 +72,25 @@ public class WinningActivity extends AppCompatActivity {
         TextView winningTextView = (TextView)findViewById(R.id.winnerText);
         TextView winningCause = (TextView)findViewById(R.id.winnerCause);
 
+        // add the current players
+        players.addPlayer(settings.getString("nickname1", "Player 1"));
+        players.addPlayer(settings.getString("nickname2", "Player 2"));
 
-        // Get the nickname of the winner from shared preferences and set the winner text
+        // Get the nickname of the winner from shared preferences and set the winner text and
+        // add to highscores
         if (winner)
             nicknameWinner = settings.getString("nickname1","Player 1");
         else
             nicknameWinner = settings.getString("nickname2","Player 2");
+
         winningTextView.setText(nicknameWinner + " " + this.getString(R.string.winnaar));
+        players.addVictory(nicknameWinner);
 
         // Get the cause for winning and show it
         if (cause == 1)
             winningCause.setText(this.getString(R.string.winMethod1));
         else
             winningCause.setText(this.getString(R.string.winMethod2));
-
-        // add player
-        players.addPlayer(nicknameWinner);
-
     }
 
 
@@ -90,16 +98,10 @@ public class WinningActivity extends AppCompatActivity {
      * Get all highscores and print them on the screen
      */
     private void intialiseHighscores() {
-        // make a new listview adapter
-        ArrayAdapter<String> myAdapter =
-            new ArrayAdapter<String>(this,
-                                    android.R.layout.simple_list_item_1,
-                                    players.getPlayers());
 
-        // connect the adapter to the listview
-        ListView myList= (ListView) findViewById(R.id.highscoreList);
-        myList.setAdapter(myAdapter);
-
+        ListAdapter adapter = new HashMapAdapter(this, (HashMap<String, Integer>) players.getHighscores());
+        ListView itemListView = (ListView) findViewById(R.id.highscoreList);
+        itemListView.setAdapter(adapter);
     }
 
 
@@ -133,7 +135,13 @@ public class WinningActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        updateHighscores();
+    }
 
+    /*
+     * Save the game state
+     */
+    private void updateHighscores() {
         //save the data
         SharedPreferences.Editor editor = settings.edit();
 
@@ -142,14 +150,18 @@ public class WinningActivity extends AppCompatActivity {
 
         // commit the edits
         editor.commit();
+
+        System.out.print("Current highscores:");
+        System.out.println(settings.getString("highscores","geen highscores"));
     }
+
+
 
     /*
      * Set language to value in preferences
      */
     private void setLocale() {
-
-        // get preferences
+         // get preferences
         String lang = settings.getString("app_language", "");
 
         Locale locale = getBaseContext().getResources().getConfiguration().locale;
@@ -171,6 +183,7 @@ public class WinningActivity extends AppCompatActivity {
      * Onclick listener which starts a new game
      */
     public void newGame(View view) {
+        updateHighscores();
         Intent i = new Intent(this,StartActivity.class);
         startActivity(i);
         finish();

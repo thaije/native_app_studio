@@ -8,9 +8,11 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +45,7 @@ public class GameActivity extends AppCompatActivity {
         this.game = new Game(lexicon, this);
 
         setTextViews();
+        setOnEnterListener();
     }
 
 
@@ -50,26 +53,34 @@ public class GameActivity extends AppCompatActivity {
      * Reset the game
      */
     public void resetGame() {
+        game.lexicon = null;
+        game = null;
         SharedPreferences.Editor editor = settings.edit();
         editor.remove("word");
         editor.remove("turn");
         editor.commit();
-        game = null;
+    }
 
+    /*
+     * Onclick listener of guess button, check the input
+     */
+    public void guessButton(View view) {
+        checkGuess();
     }
 
 
+
     /*
-     * Onclick of guess button, check the input
+     * Check the input and add it to the word if in correct format
      */
-    public void checkGuess(View view) {
+    public void checkGuess() {
         // Check input
         String letter = checkLetter();
         System.out.print("Input was:");
         System.out.println(letter);
 
         // return a toast to the user when the input is wrong
-        if(letter == "") {
+        if (letter == "") {
             CharSequence text = "Input 1 letter please";
             int duration = Toast.LENGTH_SHORT;
 
@@ -80,12 +91,29 @@ public class GameActivity extends AppCompatActivity {
 
         // If the input is correct add it to the word and check the word and continue
         // if it hasn't ended yet
-        if(checkWord(letter)) {
+        if (checkWord(letter)) {
             game.nextTurn();
             setTextViews();
         }
+    }
 
 
+    /*
+     * Onkey listener for enter button
+     */
+    public void setOnEnterListener() {
+        EditText editText = (EditText) findViewById(R.id.nextLetter);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    checkGuess();
+                    handled = true;
+                }
+                return handled;
+            }
+        });
     }
 
 
@@ -188,7 +216,7 @@ public class GameActivity extends AppCompatActivity {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent i = new Intent(this, StartSettingsActivity.class);
+                Intent i = new Intent(this, SettingsActivity.class);
                 startActivity(i);
                 finish();
                 return true;

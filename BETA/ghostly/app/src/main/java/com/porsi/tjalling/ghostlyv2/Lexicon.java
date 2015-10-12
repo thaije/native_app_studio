@@ -2,6 +2,7 @@ package com.porsi.tjalling.ghostlyv2;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -17,7 +18,8 @@ import java.util.Iterator;
  */
 class Lexicon {
 
-    private HashSet<String> filter = new HashSet<String>();
+    private HashSet<String> oldFilter = new HashSet<String>();
+    private HashSet<String> filter;
     private HashSet<String> lexicon = new HashSet<String>();
     private boolean exactWord = false;
 
@@ -30,6 +32,7 @@ class Lexicon {
         // Get all assets
         AssetManager am = context.getAssets();
 
+        // read the file into a hashmap
         try {
             InputStream is = am.open(sourcePath);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -52,17 +55,27 @@ class Lexicon {
      * Filter word list based on if the word starts with the given input
      */
     public void filter(String word) {
-        reset();
+        HashSet<String> tempFilter;
+        Iterator<String> it;
 
-        Iterator<String> it = lexicon.iterator();
+        // check if we need to check the whole lexicon, or we can filter our previous filter
+        if (filter == null) {
+            filter = new HashSet<String>();
+            it = lexicon.iterator();
+        }
+        else {
+            tempFilter = filter;
+            filter = new HashSet<String>();
+            it = tempFilter.iterator();
+        }
+
+        // loop through the possible words and add to the filter if it is possible
         while( it.hasNext() ) {
             String item = it.next();
 
             // add the word to the filter if it starts with the given input
-            if( item.startsWith(word.toLowerCase()) ) {
+            if( item.startsWith(word.toLowerCase()) )
                 filter.add(item);
-                System.out.println(item);
-            }
 
             // if there is a word that equals the typed word, save it
             if (item.equals(word.toLowerCase()))
@@ -75,7 +88,8 @@ class Lexicon {
      * Return number of possible words remaining in filtered list
      */
     public int count(String word) {
-        if(word == "")
+        Log.e("WORD",word);
+        if(word == "" || filter == null)
             return lexicon.size();
 
         return filter.size();

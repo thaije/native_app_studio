@@ -34,7 +34,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false"
             android:layout_gravity="bottom|left"
-            android:layout_weight="4" />
+            android:layout_weight="4"
+            android:imeOptions="actionSend"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
             android:layout_marginLeft="10dp"
             android:layout_gravity="bottom|right"
             android:layout_weight="1"
-            android:onClick="checkGuess" />
+            android:onClick="guessButton" />
     </LinearLayout>
 
     <TextView
@@ -56,7 +57,15 @@
         android:textSize="25sp"
         android:layout_below="@+id/turnTextView"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:padding="12dp"
+        android:textColor="#61abff"
+        android:textStyle="bold"
+        android:shadowColor="#081e44"
+        android:shadowDx="4"
+        android:shadowDy="-4"
+        android:shadowRadius="1"
+        android:textIsSelectable="false" />
 
     <TextView
         android:layout_width="wrap_content"

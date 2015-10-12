@@ -21,13 +21,13 @@ import java.util.TreeSet;
  */
 public class Players {
 
-    TreeMap<String, Integer> highscores;
+    HashMap<String, Integer> highscores;
 
     /*
      * Constructor for Game class
      */
     Players() {
-        highscores = new TreeMap<String, Integer>();
+        highscores = new HashMap<String, Integer>();
     }
 
     /*
@@ -42,10 +42,11 @@ public class Players {
 
 
     /*
-     * Add a new player to the highscores
+     * Add a new player to the highscores if it doesn't exist yet
      */
     public void addPlayer(String nickname){
-        highscores.put(nickname,0);
+        if (!highscores.containsKey(nickname))
+           highscores.put(nickname,0);
     }
 
 
@@ -69,6 +70,14 @@ public class Players {
         return strings;
     }
 
+    /*
+     * Get all highscores by returning the TreeMap
+     */
+    public HashMap<String,Integer> getHighscores() {
+        return highscores;
+    }
+
+
 
     /*
      * Return the highscores as a json string
@@ -81,8 +90,8 @@ public class Players {
     /*
      * Converts a JSON object to a hashmap used to intialize the highscore hashmap
      */
-    private static TreeMap<String, Integer> toHashMap(JSONObject object) throws JSONException {
-        TreeMap<String, Integer> map = new TreeMap<>();
+    private static HashMap<String, Integer> toHashMap(JSONObject object) throws JSONException {
+        HashMap<String, Integer> map = new HashMap<>();
 
         // loop through all of the json objects
         Iterator<String> keysItr = object.keys();

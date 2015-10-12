@@ -16,7 +16,7 @@ import java.util.Locale;
  * University: University of Amsterdam
  * Course: Native App Studio
  */
-public class StartSettingsActivity extends Activity {
+public class SettingsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +24,14 @@ public class StartSettingsActivity extends Activity {
 
         // Display the fragment as the main content.
         getFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new StartSettingsFragment())
+                .replace(android.R.id.content, new SettingsFragment())
                 .commit();
 
     }
 
-
+    /*
+     * An shared preference change listener which sets language on change
+     */
     SharedPreferences.OnSharedPreferenceChangeListener spChanged = new
             SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
@@ -60,7 +62,7 @@ public class StartSettingsActivity extends Activity {
         res.updateConfiguration(conf, dm);
 
         // restart activity
-        Intent refresh = new Intent(this, StartSettingsActivity.class);
+        Intent refresh = new Intent(this, SettingsActivity.class);
         startActivity(refresh);
         finish();
     }

@@ -12,7 +12,6 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import java.util.Locale;
 
@@ -68,7 +67,7 @@ public class StartActivity extends Activity {
     }
 
     public void startSettings(View view) {
-        Intent i = new Intent(this, StartSettingsActivity.class);
+        Intent i = new Intent(this, SettingsActivity.class);
         startActivityForResult(i, 0);
     }
 

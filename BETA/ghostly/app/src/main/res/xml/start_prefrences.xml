@@ -19,13 +19,13 @@
     <PreferenceCategory
         android:title="Nicknames">
 
-        <EditTextPreference
+        <com.porsi.tjalling.ghostlyv2.AutoCompletePreference
             android:key="nickname1"
             android:title="@string/nickname1_title"
             android:dialogTitle="@string/nickname1_dialog"
             android:defaultValue="Player 1"/>
 
-        <EditTextPreference
+        <com.porsi.tjalling.ghostlyv2.AutoCompletePreference
             android:key="nickname2"
             android:title="@string/nickname2_title"
             android:dialogTitle="@string/nickname2_dialog"
