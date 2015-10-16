@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.0"
 
     defaultConfig {
-        applicationId "com.porsi.tjalling.friendsr"
+        applicationId "com.porsi.tjalling.guessinggamev2"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

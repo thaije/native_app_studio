@@ -1,4 +1,4 @@
-package com.porsi.tjalling.friendsr;
+package com.porsi.tjalling.guessinggamev2;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

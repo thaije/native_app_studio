@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Number Guessing</string>
+    <string name="app_name">Number Guessing v2</string>
 
     <string name="hello">Guess the number in 5 steps! Hint: The number is between 0 and 25</string>
     <string name="action_settings">Settings</string>

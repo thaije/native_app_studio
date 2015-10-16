@@ -1,13 +1,11 @@
-package com.porsi.tjalling.friendsr;
+package com.porsi.tjalling.guessinggamev2;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class CheckActivity extends AppCompatActivity {
